@@ -2,8 +2,8 @@ var express = require('express');
 var app = express();
 var pgp = require('pg-promise')({});
 var env = require('import-env')
-var cn = process.env.cn
-var db = pgp(cn);
+var uri = process.env.DATABASE_URL
+var db = pgp(uri);
 // var db = pgp({database: 'tasks'});
 
 const body_parser = require('body-parser');
