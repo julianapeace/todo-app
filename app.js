@@ -1,7 +1,10 @@
 var express = require('express');
 var app = express();
 var pgp = require('pg-promise')({});
-var db = pgp({database: 'tasks'});
+var env = require('import-env')
+var cn = process.env.cn
+var db = pgp(cn);
+// var db = pgp({database: 'tasks'});
 
 const body_parser = require('body-parser');
 app.use(body_parser.urlencoded({extended: false}));
