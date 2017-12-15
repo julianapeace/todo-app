@@ -2,9 +2,8 @@ var express = require('express');
 var app = express();
 var pgp = require('pg-promise')({});
 var env = require('import-env')
-var uri = process.env.DATABASE_URL
+var uri = process.env.DATABASE_URL || "{database:'tasks'}"
 var db = pgp(uri);
-// var db = pgp({database: 'tasks'});
 
 const body_parser = require('body-parser');
 app.use(body_parser.urlencoded({extended: false}));
@@ -53,3 +52,5 @@ app.get('/todos/done/:id', function(req, res, next){
 app.listen(8000, function () {
   console.log('Listening on port 8000');
 });
+
+exports.app = app;
